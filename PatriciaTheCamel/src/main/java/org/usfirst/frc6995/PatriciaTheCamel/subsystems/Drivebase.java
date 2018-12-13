@@ -32,7 +32,7 @@ public class Drivebase extends PIDSubsystem {
     public final WPI_TalonSRX driveRight = RobotMap.drivebaseDriveRight;
     public double rotateRate;
     public Drivebase() {
-        super("DriveController", 2.0, 0.0, 0.0);
+        super("DriveController", 0.5, 0.0, 0.0);
     }
     @Override
     public void initDefaultCommand() {
