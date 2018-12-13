@@ -13,7 +13,8 @@ public class BasicAuto extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	//added variable as input so we can contol distance through smart dashboard
-    	addSequential(new DriveDistance(Robot.autoDistance));
+        addSequential(new DriveDistance(Robot.autoDistance));
+        addSequential(new DrivePivotDegrees(5, 90));
     	System.out.println("drive Command added to group" );
     }
 }
