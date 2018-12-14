@@ -55,10 +55,11 @@ public class DriveCom extends Command {
 		}
     	else {
     		rotation = leftRight;
-    	}
+        }
+        double throttle = ((throt-1)/2);
     	
     	//Inputs the variables into the arcadeDrive method defined in Drivebase
-    	Robot.drivebase.arcadeDrive(frontBack, rotation, throt);
+    	Robot.drivebase.arcadeDrive(frontBack, rotation, throttle);
     }
     
 

@@ -9,12 +9,13 @@ package org.usfirst.frc6995.PatriciaTheCamel.commands;
 
 import org.usfirst.frc6995.PatriciaTheCamel.Robot;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
  */
-public class DrivePivotDegrees extends TimedCommand {
+public class DrivePivotDegrees extends Command {
   /**
    * Add your docs here.
    */
@@ -27,28 +28,45 @@ public class DrivePivotDegrees extends TimedCommand {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivebase);
+    
+    
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    finalAngle = Robot.navigation.getYaw() + turnAngle;
+    Robot.navigation.resetYaw();
+    finalAngle = (Robot.navigation.getYaw() + turnAngle);
+    System.out.println("DrivePivot Init");
+    
+    Robot.drivebase.enable();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.drivebase.holdAtAngle(0, finalAngle);
+    System.out.println("DrivePivot turning");
+    SmartDashboard.putNumber("TurnAngle", finalAngle);
   }
 
   // Called once after timeout
   @Override
   protected void end() {
+    Robot.drivebase.arcadeDrive(0,0,0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
+
+  @Override
+  protected boolean isFinished() {
+    return Robot.drivebase.onTarget();
+  }
+
+  
 }

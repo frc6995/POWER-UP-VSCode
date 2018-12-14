@@ -1,7 +1,7 @@
 package org.usfirst.frc6995.PatriciaTheCamel.subsystems;
 
 //import org.usfirst.frc.team3255.robot2018.RobotPreferences;
-
+//turning to the right is increasing values
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.networktables.NetworkTable;
@@ -37,7 +37,7 @@ public class Navigation extends Subsystem {
 
 	// NavX
 	public double getYaw() {
-		return ahrs.getYaw();
+		return convertto0to360(ahrs.getYaw());
 	}
 	
 	public double getPitch() {
@@ -119,5 +119,12 @@ public class Navigation extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    }
+	}
+	
+	public double convertto0to360(double heading){
+		if(heading<0) {
+			heading+=360;
+		}
+		return heading;
+	}
 }    

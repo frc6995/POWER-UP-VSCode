@@ -58,21 +58,12 @@ public class RobotMap {
     	grabberIntakeLeft = new Spark(7);
     	grabberIntakeRight = new Spark(8);
         
-        //conveyorConveyorMotor = new Spark(9);
-        
-        //conveyorConveyorSwitch = new DigitalInput(0);
+
         
         cameraShuttleCameraServo = new Servo(0);
         LiveWindow.addActuator("CameraShuttle", "CameraServo", cameraShuttleCameraServo);
         
         lifterLifterMotor = new Spark(5);
-/*        
-        
-        lifterLifterMotorB = new WPI_TalonSRX(6);
-        lifterLifterMotorB.set(ControlMode.Follower, 5.0);
-        
-    	lifterLifterMotorA.setNeutralMode(NeutralMode.Brake);
-    	lifterLifterMotorB.setNeutralMode(NeutralMode.Brake);*/
         
         
         lifterLifterTopSwitch = new DigitalInput(3);
@@ -81,27 +72,6 @@ public class RobotMap {
         lifterLifterBottomSwitch = new DigitalInput(4);
         LiveWindow.addSensor("Lifter", "LifterBottomSwitch", lifterLifterBottomSwitch);
         
-        /*lifterLifterRotatorMotor = new WPI_TalonSRX(4);
-        lifterLifterRotatorMotor.setSensorPhase(false);
-        lifterLifterRotatorMotor.setInverted(false);
-        lifterLifterRotatorMotor.getSensorCollection().setQuadraturePosition(0, 10);
-        
-        // Set the peak and nominal outputs, 12V means full      
-        lifterLifterRotatorMotor.configNominalOutputForward(0.0, 0);
-        lifterLifterRotatorMotor.configNominalOutputReverse(0.0, 0);
-        lifterLifterRotatorMotor.configPeakOutputForward(6.0, 0);
-        lifterLifterRotatorMotor.configPeakOutputReverse(-6.0, 0);
-        
-        // Set closed loop gains in slot0 - see documentation
-        lifterLifterRotatorMotor.selectProfileSlot(0, 0);
-        lifterLifterRotatorMotor.config_kF(0, 1.68, 0);
-        lifterLifterRotatorMotor.config_kP(0, 1.2, 0);  // Need something to give a consisten correction for error
-        lifterLifterRotatorMotor.config_kI(0, 0, 0);
-        lifterLifterRotatorMotor.config_kD(0, 0, 0);
-        lifterLifterRotatorMotor.configMotionCruiseVelocity(180, 0);  // At full power, read ~610 counts/100msec
-        lifterLifterRotatorMotor.configMotionAcceleration(4800, 0);  // Since this is a slow max speed we want a quick ramp
-        // The above settings gave high repeatability on Fwd/Bkwd movements of 1/2 rotation (+1024 to -1024).
-        // Typically saw ending position error vary by no more than 5 counts (4096 cnt/rev)*/
         
         lifterBrake = new Solenoid(1,7);
         

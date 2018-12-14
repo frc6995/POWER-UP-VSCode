@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
         
         lifterSpeedUp = .75; //prefs.getDouble("lifterSpeedUp", .6);
     	lifterSpeedDown = -.1;//prefs.getDouble("lifterSpeedDown", -.3);
-    	autoDistance = -120;//prefs.getDouble("autoDistance", -120);
+    	autoDistance = -10;//prefs.getDouble("autoDistance", -120);
     	
         grabber = new Grabber();
         intake = new Intake();
@@ -84,6 +84,12 @@ public class Robot extends TimedRobot {
         chooser.addDefault("Autonomous Command", new BasicAuto());
 
         SmartDashboard.putData("Auto mode", chooser);
+    }
+    @Override
+    public void robotPeriodic() {
+        super.robotPeriodic();
+        
+
     }
 
     /**
@@ -118,6 +124,8 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("Yaw", navigation.getYaw());
+        SmartDashboard.putNumber("rotateRate", drivebase.rotateRate);
     }
 
     @Override
@@ -140,6 +148,7 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
     	
         Scheduler.getInstance().run();
-        
+        SmartDashboard.putNumber("Yaw", navigation.getYaw());
+        SmartDashboard.putNumber("rotateRate", drivebase.rotateRate);
     }
 }
